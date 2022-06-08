@@ -1,0 +1,26 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+nav{
+    width: 100%;
+    background-color: aqua;
+}
+ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    gap: 20px;
+    list-style: none;
+    padding: 30px;
+}
+nav a{
+    font-size: 25px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: aquamarine;
+    text-decoration: none;
+}
