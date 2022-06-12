@@ -1,34 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/index.css" />
+    <title>Home</title>
+    <style></style>
+  </head>
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="/styles/index.css">
-        <title>Home</title>
-    </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="index.html">Index</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="signup.html">Signup</a></li>
+      </ul>
+    </nav>
+    <div id="slideshow">
+      <!--Show Slideshow here-->
+    </div>
 
-    <body>
-        <nav>
-            <ul>
-                <li><a href="index.html">Index</a></li>
-                <li><a href="login.html">Login</a></li>
-                <li><a href="signup.html">Signup</a></li>
-            </ul>
-        </nav>
-        <div id="slideshow">
-            <!--Show Slideshow here-->
+    <div id="sort-buttons">
+      <!--Add sorting here-->
+      <button id="sort-lh">Sort by low rating to high</button>
+      <button id="sort-hl">Sort by High rating to low</button>
+    </div>
+    <div id="movies">
+      <!--Show list of movies here-->
+    </div>
+  </body>
+  <script>
+    // var movies;
+    // if (localStorage.getItem("movies") === null) {
+    movies = [
+      {
+        Title: "PK",
+        Year: "2014",
+        Poster:
+          "https://m.media-amazon.com/images/M/MV5BMTYzOTE2NjkxN15BMl5BanBnXkFtZTgwMDgzMTg0MzE@._V1_SX300.jpg",
+        imdbRating: "8.1",
+      },
+      {
+        Title: "Iron Man",
+        Year: "2008",
+        Poster:
+          "https://m.media-amazon.com/images/M/MV5BMTczNTI2ODUwOF5BMl5BanBnXkFtZTcwMTU0NTIzMw@@._V1_SX300.jpg",
+        imdbRating: "7.9",
+      },
+      {
+        Title: "Inception",
+        Year: "2010",
+        Poster:
+          "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX300.jpg",
+        imdbRating: "8.8",
+      },
+      {
+        Title: "Shaktiman",
+        Year: "1993",
+        Poster:
+          "https://m.media-amazon.com/images/M/MV5BMzQzMWE1YzEtZmRmNS00M2IwLWExNGMtYWI2M2ZlNTVkODYyXkEyXkFqcGdeQXVyODE5NzE3OTE@._V1_SX300.jpg",
+        imdbRating: "2.5",
+      },
+      {
+        Title: "Superman",
+        Year: "1978",
+        Poster:
+          "https://m.media-amazon.com/images/M/MV5BMzA0YWMwMTUtMTVhNC00NjRkLWE2ZTgtOWEzNjJhYzNiMTlkXkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_SX300.jpg",
+        imdbRating: "7.4",
+      },
+      {
+        Title: "Batman",
+        Year: "1989",
+        Poster:
+          "https://m.media-amazon.com/images/M/MV5BZTM2NmZlOTEtYTI5NS00N2JjLWJkNzItMmZkNDBlYmQzNDA2XkEyXkFqcGdeQXVyMTAxODYyODI@._V1_SX300.jpg",
+        imdbRating: "7.5",
+      },
+      {
+        Title: "She",
+        Year: "2012",
+        Poster:
+          "https://m.media-amazon.com/images/M/MV5BYzc4ZmFhZjItOWJjMy00YzhiLTkxMDAtNWUyNjIyOTJkYmY3XkEyXkFqcGdeQXVyNDAzNDk0MTQ@._V1_SX300.jpg",
+        imdbRating: "6.5",
+      },
+      {
+        Title: "Kargil",
+        Year: "2018",
+        Poster:
+          "https://m.media-amazon.com/images/M/MV5BYTAzNzIwYjItOGY3Yy00MzJmLTg2ZjEtNzdjZmQwM2ZkYjk3XkEyXkFqcGdeQXVyNzM4OTQzMzg@._V1_SX300.jpg",
+        imdbRating: "7.2",
+      },
+      {
+        Title: "The Last Dance",
+        Year: "2020",
+        Poster:
+          "https://m.media-amazon.com/images/M/MV5BY2U1ZTU4OWItNGU2MC00MTg1LTk4NzUtYTk3ODhjYjI0MzlmXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_SX300.jpg",
+        imdbRating: "9.1",
+      },
+    ];
+    //     localStorage.setItem("movies", JSON.stringify(movies));
+    // }
+    // else {
+    //     movies = JSON.parse(localStorage.getItem("movies"));
+    // }
 
-        </div>
+    movies.forEach((ele) => {
+      var div = document.createElement("div");
 
-        <div id="sort-buttons">
+      var image = document.createElement("img");
+      image.src = ele.Poster;
 
-            <!--Add sorting here-->
-        </div>
-        <div id="movies">
-            <!--Show list of movies here-->
-        </div>
-    </body>
+      var name = document.createElement("h2");
+      name.innerText = "Title: " + ele.Title;
 
+      var Year = document.createElement("p");
+      Year.innerText = "Release:" + ele.Year;
+
+      var imbd = document.createElement("p");
+      imbd.innerText = "IMBD: " + ele.imdbRating;
+
+      div.append(image, name, Year, imbd);
+
+      document.querySelector("#movies").append(div);
+    });
+    document.querySelector("#sort-lh").addEventListener("click", sort1);
+    function sort1() {}
+    // var poster;
+    // if (localStorage.getItem("poster") === null) {
+    //     poster = [
+    //         { "Poster": "https://m.media-amazon.com/images/M/MV5BMTYzOTE2NjkxN15BMl5BanBnXkFtZTgwMDgzMTg0MzE@._V1_SX300.jpg" },
+    //         { "Poster": "https://m.media-amazon.com/images/M/MV5BMTczNTI2ODUwOF5BMl5BanBnXkFtZTcwMTU0NTIzMw@@._V1_SX300.jpg" },
+    //         { "Poster": "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX300.jpg" },
+    //         { "Poster": "https://m.media-amazon.com/images/M/MV5BMzQzMWE1YzEtZmRmNS00M2IwLWExNGMtYWI2M2ZlNTVkODYyXkEyXkFqcGdeQXVyODE5NzE3OTE@._V1_SX300.jpg" },
+    //         { "Poster": "https://m.media-amazon.com/images/M/MV5BMzA0YWMwMTUtMTVhNC00NjRkLWE2ZTgtOWEzNjJhYzNiMTlkXkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_SX300.jpg" },
+    //         { "Poster": "https://m.media-amazon.com/images/M/MV5BZTM2NmZlOTEtYTI5NS00N2JjLWJkNzItMmZkNDBlYmQzNDA2XkEyXkFqcGdeQXVyMTAxODYyODI@._V1_SX300.jpg" },
+    //         { "Poster": "https://m.media-amazon.com/images/M/MV5BNDU1ZDFmNjUtNDg3Zi00YTY1LThjNmQtMzc2ZGYwOWQ5Mjk3XkEyXkFqcGdeQXVyMjAyMzM0Mjc@._V1_SX300.jpg" },
+    //         { "Poster": "https://m.media-amazon.com/images/M/MV5BYTAzNzIwYjItOGY3Yy00MzJmLTg2ZjEtNzdjZmQwM2ZkYjk3XkEyXkFqcGdeQXVyNzM4OTQzMzg@._V1_SX300.jpg" },
+    //         { "Poster": "https://m.media-amazon.com/images/M/MV5BY2U1ZTU4OWItNGU2MC00MTg1LTk4NzUtYTk3ODhjYjI0MzlmXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_SX300.jpg" }
+    //     ];
+    //     localStorage.setItem("movies", JSON.stringify(poster));
+    // }
+    // else {
+    //     movies = JSON.parse(localStorage.getItem("poster"));
+    // }
+
+    // var img = document.createElement("img");
+
+    // slide();
+    // function slide() {
+    //   var i = 0;
+
+    //   setInterval(() => {
+    //     if (i === poster.length) {
+    //       i = 0;
+    //     }
+    //     img.src = poster[i];
+    //     document.querySelector("#slideshow").append(img);
+    //     i++;
+    //   }, 2000);
+    // }
+  </script>
 </html>
